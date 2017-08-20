@@ -1,0 +1,54 @@
+{
+  "name": "easy-query-string",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "version": "1.0.0",
+  "description": "Easy query string in node and browser, without any dependencies, support parse/stringify/add/omit/pick",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whatwewant/easy-query-string"
+  },
+  "homepage": "https://github.com/whatwewant/easy-query-string",
+  "keywords": [
+    "easy-query-string",
+    "query-parse",
+    "easy-query-stringify"
+  ],
+  "authors": [
+    "whatwewant <uniquecolesmith@gmail.com> (https://github.com/whatwewant)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whatwewant/easy-query-string/issues"
+  },
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc mocha --no-timeouts",
+    "build": "rimraf lib && babel src --out-dir lib"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.14.0",
+    "cross-env": "^2.0.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "nyc": "^8.1.0",
+    "rimraf": "^2.5.4"
+  },
+  "files": [
+    "lib",
+    "src"
+  ]
+}
