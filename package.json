@@ -2,7 +2,7 @@
   "name": "easy-query-string",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy query string in node and browser, without any dependencies, support parse/stringify/add/omit/pick",
   "repository": {
     "type": "git",

@@ -21,6 +21,10 @@ describe('query-string', () => {
     pick = ['h'];
     strAfterPick = 'h=hhhh';
   });
+
+  it('parse:url', () => {
+    expect(queryString.parse('http://example.com?x=1&y=2#z=c')).toEqual({ x: 1, y: 2});
+  });
   
   it('parse:number', () => {
     expect(queryString.parse(str)).toEqual(par);
@@ -38,8 +42,19 @@ describe('query-string', () => {
     expect(queryString.parse('?active=ok&j=k')).toEqual({ active: 'ok', j: 'k' });
   })
 
+  it('parse:array', () => {
+    expect(queryString.parse('?sort=title&sort=createdAt&sort=-updatedAt')).toEqual({ sort: ['title', 'createdAt', '-updatedAt'] });
+  });
+
   it('stringify', () => {
     expect(queryString.stringify(par)).toEqual(str.slice(1));
+  });
+
+  it('stringify:array', () => {
+    expect(queryString.stringify({
+      title: 'stringify-title',
+      sort: ['createdAt', 'updatedAt']
+    })).toEqual('title=stringify-title&sort=createdAt&sort=updatedAt');
   });
 
   it('add', () => {
