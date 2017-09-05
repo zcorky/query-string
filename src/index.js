@@ -13,7 +13,7 @@ export function parse(query = '') {
             ...a,
             [key]: a[key] === undefined ? parsedValue: !Array.isArray(a[key]) ? [a[key], parsedValue] : [...a[key], parsedValue],
           };
-        } else if (['false', 'true'].includes(decodedValue)) {
+        } else if (['false', 'true'].indexOf(decodedValue) !== -1) {
           const v = decodedValue === 'true' ? true : false;
           return {
             ...a,
