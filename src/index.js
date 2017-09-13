@@ -1,3 +1,7 @@
+Object.entries = Object.entries || function (object) {
+  return Object.keys(object).map(k => [k, object[k]]);
+};
+
 export function parse(query = '') {
   const index = query.indexOf('?');
   const realQuery = index === -1 ? query.split('#')[0] : query.slice(index + 1).split('#')[0];
