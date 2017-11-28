@@ -1,5 +1,16 @@
 const expect = require('expect');
-const queryString = require('../lib');
+const qs = require('../lib');
+const add = require('../lib/add');
+const omit = require('../lib/omit');
+const pick = require('../lib/pick');
+
+const queryString = {
+  parse: qs.default.parse,
+  stringify: qs.default.stringify,
+  add: add.default,
+  omit: omit.default,
+  pick: pick.default,
+};
 
 describe('query-string', () => {
   let str;
