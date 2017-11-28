@@ -12,7 +12,10 @@ $ npm install easy-query-string
 
 ```javascript
 // import
-import { stringify, parse, add, omit, pick } from 'easy-query-string';
+import { stringify, parse } from 'easy-query-string';
+import add from 'easy-query-string/lib/add';
+import omit from 'easy-query-string/lib/omit';
+import pick from 'easy-query-string/lib/pick';
 
 // 1 parse: support number/bool/string
 parse('?token=Uakgb_J5m9g~0JDMbcJqLJ&active=true&offset=10&limit=100');
