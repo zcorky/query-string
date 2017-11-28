@@ -5,8 +5,8 @@ const omit = require('../lib/omit');
 const pick = require('../lib/pick');
 
 const queryString = {
-  parse: qs.default.parse,
-  stringify: qs.default.stringify,
+  parse: qs.parse,
+  stringify: qs.stringify,
   add: add.default,
   omit: omit.default,
   pick: pick.default,
