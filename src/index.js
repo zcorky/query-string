@@ -1,12 +1,12 @@
-import parse from './parse';
-import stringify from './stringify';
+export { default as parse } from './parse';
+import { default as stringify } from './stringify';
 
-export {
-  parse,
-  stringify,
-};
+// export {
+//   parse,
+//   stringify,
+// };
 
-export default {
-  parse,
-  stringify,
-};
+// export default {
+//   parse,
+//   stringify,
+// };
