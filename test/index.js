@@ -48,6 +48,10 @@ describe('query-string', () => {
   it('parse:bool:false', () => {
     expect(queryString.parse('?active=false&j=k')).toEqual({ active: false, j: 'k' });
   })
+
+  it('parse:undefined:true', () => {
+    expect(queryString.parse('?active')).toEqual({ active: true });
+  })
   
   it('parse:string', () => {
     expect(queryString.parse('?active=ok&j=k')).toEqual({ active: 'ok', j: 'k' });
