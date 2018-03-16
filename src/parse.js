@@ -6,6 +6,13 @@ export default function parse(query = '') {
     .split('&')
     .reduce((a, b) => {
         const [key, value] = b.split('=');
+
+        return {
+          ...a,
+          [key]: [...a[key], value],
+        };
+        
+        /*
         const decodedValue = decodeURIComponent(value || true);
         const parsedValue = parseInt(decodedValue, 10);
         if (!isNaN(parsedValue)) {
@@ -25,6 +32,7 @@ export default function parse(query = '') {
             [key]: a[key] === undefined ? decodedValue : !Array.isArray(a[key]) ? [a[key], decodedValue] : [...a[key], decodedValue],
           };
         }
+        */
       },
       {},
     );
