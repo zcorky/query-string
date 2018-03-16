@@ -49,6 +49,14 @@ describe('query-string', () => {
     expect(queryString.parse('?type=中文')).toEqual({ type: '中文'  });
   });
 
+  it('parse:value_is_url', () => {
+    expect(queryString.parse('http://localhost:8000/?api=https://127.0.0.1/asdas?x=%E5%93%88%E5%93%88%E5%93%88%E5%93%88&b=true&c=fff#f')).toEqual({
+      api: 'https://127.0.0.1/asdas?x=哈哈哈哈',
+      b: 'true',
+      c: 'fff',
+    });
+  });
+
   it('stringify', () => {
     expect(queryString.stringify(par)).toEqual(str.slice(1));
   });

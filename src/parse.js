@@ -1,12 +1,13 @@
 export default function parse(query = '') {
   const index = query.indexOf('?');
-  const realQuery = index === -1 ? query.split('#')[0] : query.slice(index + 1).split('#')[0];
+  const realQuery = decodeURIComponent(index === -1 ? query.split('#')[0] : query.slice(index + 1).split('#')[0]);
 
   return realQuery
     .split('&')
     .reduce((a, b) => {
-        const [key, value] = b.split('=');
-
+        const kvs = b.split('=');
+        const key = kvs.shift();
+        const value = kvs.join('=');
         return {
           ...a,
           [key]: a[key] === undefined ? value : !Array.isArray(a[key]) ? [a[key], value] : [...a[key], value],
