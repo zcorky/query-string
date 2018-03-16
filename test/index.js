@@ -24,7 +24,7 @@ describe('query-string', () => {
 
   before(function () {
     str = '?code=1213&h=hhhh';
-    par = { code: 1213, h: 'hhhh' };
+    par = { code: '1213', h: 'hhhh' };
     add = { k: 'kkk' };
     strAfterAdd = 'code=1213&h=hhhh&k=kkk';
     omit = ['h'];
@@ -34,24 +34,8 @@ describe('query-string', () => {
   });
 
   it('parse:url', () => {
-    expect(queryString.parse('http://example.com?x=1&y=2#z=c')).toEqual({ x: 1, y: 2});
+    expect(queryString.parse('http://example.com?x=1&y=2#z=c')).toEqual({ x: '1', y: '2' });
   });
-  
-  it('parse:number', () => {
-    expect(queryString.parse(str)).toEqual(par);
-  });
-
-  it('parse:bool:true', () => {
-    expect(queryString.parse('?active=true&j=k')).toEqual({ active: true, j: 'k' });
-  })
-
-  it('parse:bool:false', () => {
-    expect(queryString.parse('?active=false&j=k')).toEqual({ active: false, j: 'k' });
-  })
-
-  it('parse:undefined:true', () => {
-    expect(queryString.parse('?active')).toEqual({ active: true });
-  })
   
   it('parse:string', () => {
     expect(queryString.parse('?active=ok&j=k')).toEqual({ active: 'ok', j: 'k' });
@@ -59,6 +43,10 @@ describe('query-string', () => {
 
   it('parse:array', () => {
     expect(queryString.parse('?sort=title&sort=createdAt&sort=-updatedAt')).toEqual({ sort: ['title', 'createdAt', '-updatedAt'] });
+  });
+
+  it('parse:chinese', () => {
+    expect(queryString.parse('?type=中文')).toEqual({ type: '中文'  });
   });
 
   it('stringify', () => {

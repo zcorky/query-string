@@ -9,7 +9,7 @@ export default function parse(query = '') {
 
         return {
           ...a,
-          [key]: [...a[key], value],
+          [key]: a[key] === undefined ? value : !Array.isArray(a[key]) ? [a[key], value] : [...a[key], value],
         };
         
         /*
