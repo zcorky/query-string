@@ -5,21 +5,21 @@
 ### Install
 
 ```
-$ npm install easy-query-string
+$ npm install @zcorky/query-string
 ```
 
 ### Usage
 
 ```javascript
 // import
-import { stringify, parse } from 'easy-query-string';
-import add from 'easy-query-string/lib/add';
-import omit from 'easy-query-string/lib/omit';
-import pick from 'easy-query-string/lib/pick';
+import { stringify, parse } from '@zcorky/query-string';
+import { add } from '@zcorky/query-string/lib/add';
+import { omit } from '@zcorky/query-string/lib/omit';
+import { pick } from '@zcorky/query-string/lib/pick';
 
 // 1 parse: support number/bool/string
 parse('?token=Uakgb_J5m9g~0JDMbcJqLJ&active=true&offset=10&limit=100');
-// => { token: 'Uakgb_J5m9g~0JDMbcJqLJ', active: true, offset: 10, limit: 100 }
+// => { token: 'Uakgb_J5m9g~0JDMbcJqLJ', active: 'true', offset: '10', limit: '100' }
 
 // 2 stringify
 stringify({ active: true, offset: 10 });
@@ -38,5 +38,6 @@ pick('?token=Uakgb_J5m9g~0JDMbcJqLJ&offset=10', ['token']);
 // => 'token=Uakgb_J5m9g~0JDMbcJqLJ'
 ```
 
-### If More
-* Recommend: [query-string](https://www.npmjs.com/package/query-string)
+### Relatived
+* node querystring
+* [query-string](https://www.npmjs.com/package/query-string)

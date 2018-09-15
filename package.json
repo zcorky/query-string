@@ -1,58 +1,52 @@
 {
-  "name": "easy-query-string",
-  "main": "lib/index.js",
-  "jsnext:main": "src/index.js",
-  "version": "2.0.1",
+  "name": "@zcorky/query-string",
+  "version": "1.0.0",
   "description": "Easy query string in node and browser, without any dependencies, support parse/stringify/add/omit/pick",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/whatwewant/easy-query-string"
-  },
-  "homepage": "https://github.com/whatwewant/easy-query-string",
-  "keywords": [
-    "easy-query-string",
-    "query-parse",
-    "easy-query-stringify"
-  ],
-  "authors": [
-    "whatwewant <uniquecolesmith@gmail.com> (https://github.com/whatwewant)"
-  ],
+  "main": "lib/index.js",
+  "repository": "https://github.com/zcorky/query-string",
+  "author": "Zero",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/whatwewant/easy-query-string/issues"
-  },
   "scripts": {
-    "test": "cross-env NODE_ENV=test nyc mocha --no-timeouts",
-    "build": "rimraf lib && babel src --out-dir lib"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false
+    "build": "npm run clean && tsc",
+    "clean": "rimraf -rf lib",
+    "test": "NODE_ENV=test nyc mocha test/*.spec.ts --exit --timeout 10000",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.14.0",
-    "cross-env": "^2.0.1",
-    "expect": "^1.20.2",
-    "mocha": "^3.0.2",
-    "nyc": "^8.1.0",
-    "rimraf": "^2.5.4"
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.9.4",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "rimraf": "^2.6.2",
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.10.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "tslint-jsdoc-rules": "^0.1.2",
+    "typescript": "^2.8.3"
   },
   "files": [
-    "lib",
-    "src"
+    "lib/"
   ],
-  "dependencies": {
-    "babel-runtime": "^6.26.0"
+  "nyc": {
+    "check-coverage": true,
+    "include": [
+      "src/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
