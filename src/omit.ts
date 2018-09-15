@@ -13,4 +13,4 @@ export const omit: Omit = (queryString, omits = []) => {
     .reduce((total, key) => (total[key] = oqs[key], total), {});
 
   return stringify(nqs);
-}
+};

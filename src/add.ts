@@ -13,4 +13,4 @@ export const add: Add = (queryString, query = {}) => {
   const oqs = parse(queryString);
   const nqs = Object.assign(oqs, query);
   return stringify(nqs);
-}
+};
