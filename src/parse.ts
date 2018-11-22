@@ -2,11 +2,7 @@ export interface ParsedValue {
   [key: string]: string | string[]
 }
 
-export interface Parse {
-  (query: string): ParsedValue
-}
-
-export const parse: Parse = (query = '') => {
+export const parse = <T extends ParsedValue>(query = ''): T & ParsedValue => {
   const index = (query).indexOf('?');
   const realQuery = index === -1 ? query.split('#')[0] : query.slice(index + 1).split('#')[0];
 
@@ -28,5 +24,5 @@ export const parse: Parse = (query = '') => {
         return total;
       },
       {},
-    );
+    ) as T & ParsedValue;
 };
