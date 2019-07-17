@@ -11,6 +11,7 @@ export type Value<T> = T | T[]
 export const stringify: Stringify = (params = {}) => {
   return Object
     .keys(params)
+    .filter(key => typeof params[key] !== 'undefined')
     .map(key => {
       const value = params[key];
 

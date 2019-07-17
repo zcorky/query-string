@@ -65,7 +65,7 @@ describe('query-string', () => {
   it('stringify:undefined', () => {
     expect(queryString.stringify({
       title: (undefined as any),
-    })).to.be.equal('title=');
+    })).to.be.equal('');
   });
 
   it('stringify:null', () => {
